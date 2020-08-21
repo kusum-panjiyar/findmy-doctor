@@ -7,7 +7,11 @@ import Home from './components/static/Home'
 import Register from './components/users/Register'
 import Login from './components/users/Login'
 import {startUserLogout} from './actions/userAction'
-import DoctorForm from './components/doctor/doctorForm'
+
+import DoctorForm from './components/doctor/DoctorForm'
+import AddDoctor  from './components/doctor/AddDoctor'
+import EditDoctor from './components/doctor/EditDoctor'
+
 import PatientForm from './components/patient/patientForm'
 
 import {Navbar , Nav } from 'react-bootstrap'
@@ -29,8 +33,8 @@ function App(props) {
                                 <Navbar.Brand href={"/"} style={{color:'white'}}>Findmy Doctor</Navbar.Brand>
                                 <Nav className="ma-auto">
                                     <Nav.Link href={"/"} style={{color:'white'}}>Home</Nav.Link>
-                                    <Nav.Link href={"/patient"} style={{color:'white'}}>Patient</Nav.Link>
-                                    <Nav.Link href={"/doctor"} style={{color:'white'}}>Doctor</Nav.Link>
+                                    <Nav.Link href={"/patients"} style={{color:'white'}}>Patient</Nav.Link>
+                                    <Nav.Link href={"/doctors"} style={{color:'white'}}>Doctor</Nav.Link>
                                     <Nav.Link href={"/bookappointiment"} style={{color:'white'}}>Book Appointment</Nav.Link>
                                     <Nav.Link to="#" onClick={handleLogout} style={{color:'white'}}>Logout</Nav.Link>
                                 </Nav>
@@ -58,7 +62,11 @@ function App(props) {
                     <Route path="/" component={Home} exact={true}/>
                     <Route path="/users/register" component={Register} />
                     <Route path="/users/login" component={Login} />
-                    <Route path="/doctor" component={DoctorForm} />
+
+                    <Route path="/doctors" component={DoctorForm} />
+                    <Route path="/doctors" component={AddDoctor} />
+                    <Route path="/doctors" component={EditDoctor} />
+
                     <Route path='/patient' component={PatientForm} />
                 </Switch>
             </div>

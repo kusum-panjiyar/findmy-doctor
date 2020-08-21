@@ -2,7 +2,7 @@ const Doctor = require('../models/doctor')
 const multer = require('multer')
 const doctorsController = {}
 
-var upload = multer({dest: "uploads/"})
+//var upload = multer({dest: "uploads/"})
 
 doctorsController.list = (req,res) =>{
     Doctor.find({user: req.user._id})

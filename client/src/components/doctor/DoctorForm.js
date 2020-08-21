@@ -1,20 +1,21 @@
 import React from 'react'
 import { Button, Form, FormGroup, Label, Input,Row,Col} from 'reactstrap'
+import {connect} from 'react-redux'
 
 class DoctorForm extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            firstname : "",
-            lastname: "",
-            dob: "",
-            gender: "",
-            email: "",
-            mobileno: "",
-            qualification: "",
-            specialization: "",
-            clinicLocation: "",
-            clinicTiming: ""
+            firstname :'',
+            lastname:'',
+            dob:'',
+            gender:'',
+            email:'',
+            mobileno:'',
+            qualification:'',
+            specialization:'',
+            clinicLocation:'',
+            clinicTiming:''
 
         }
     }
@@ -39,6 +40,8 @@ class DoctorForm extends React.Component {
             clinicTiming: this.state.clinicTiming
         }
         console.log(formData)
+        this.props.doctor && (formData.id = this.props.doctor._id)
+        this.props.handleEditSubmit(formData)
     } 
 
     handleRadioChange=(gender) => {
@@ -211,4 +214,10 @@ class DoctorForm extends React.Component {
     }
 }
 
-export default DoctorForm
+const mapStateToProps=(state)=>{
+    return{
+        doctor:state.doctor
+    }
+}
+
+export default connect(mapStateToProps)(DoctorForm)

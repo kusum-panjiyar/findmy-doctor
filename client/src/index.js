@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
 import 'bootstrap/dist/css/bootstrap.css'
 import { startGetUser} from './actions/userAction'
+import { startSetDoctors } from './actions/doctorAction'
 
 const store = configureStore()
 
@@ -18,6 +19,7 @@ store.subscribe(()=> {
 //handle page reload
  if(localStorage.getItem('authToken')) {
      store.dispatch(startGetUser())
+     store.dispatch(startSetDoctors())
  }
 
 const jsx = ( 
