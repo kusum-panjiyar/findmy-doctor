@@ -67,7 +67,7 @@ function App(props) {
                     <Route path="/doctors" component={AddDoctor} />
                     <Route path="/doctors" component={EditDoctor} />
 
-                    <Route path='/patient' component={PatientForm} />
+                    <Route path='/patients' component={PatientForm} />
                 </Switch>
             </div>
         </BrowserRouter>

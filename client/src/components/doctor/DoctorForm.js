@@ -15,14 +15,21 @@ class DoctorForm extends React.Component {
             qualification:'',
             specialization:'',
             clinicLocation:'',
-            clinicTiming:''
+            clinicTiming:'',
+            image:null
 
         }
     }
     handleChange=(e) =>{
-        this.setState({
-            [e.target.name] : e.target.value
-        })
+        if(e.target.type == "file"){
+            this.setState({image:e.target.file[0]})
+        }
+        else{
+            this.setState({
+                [e.target.name] : e.target.value
+            })
+        }
+        
     }
 
     handleSubmit= (e) =>{
@@ -37,7 +44,7 @@ class DoctorForm extends React.Component {
             qualification: this.state.qualification,
             specialization: this.state.specialization,
             clinicLocation: this.state.clinicLocation,
-            clinicTiming: this.state.clinicTiming
+            clinicTiming: this.state.clinicTiming,
         }
         console.log(formData)
         this.props.doctor && (formData.id = this.props.doctor._id)
@@ -203,11 +210,11 @@ class DoctorForm extends React.Component {
                     </Col>
 
                     <FormGroup>
-                        <Label htmlFor='uploadPhoto'>Upload Photo</Label>
-                        <Input type='file' name='uploadPhoto' id='uploadphoto' />
+                        <Label htmlFor='image'>Image</Label>
+                        <Input type='file' name='image' id='image' onChange={this.handleChange} />
 
                     </FormGroup>
-                    <Button>Submit</Button>
+                    <Button className="register-btn btn-lg btn-block" type="submit">Submit</Button>
                 </Form>   
             </div>
         )

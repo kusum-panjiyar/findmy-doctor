@@ -16,6 +16,11 @@ doctorsController.list = (req,res) =>{
 
 doctorsController.create = (req,res) => {
     const body = req.body
+    console.log(req.file)
+    if(req.file){
+        body.image = req.file.filename
+    }
+    
     const doctor = new Doctor(body)
     doctor.user = req.user._id
     doctor.save()
