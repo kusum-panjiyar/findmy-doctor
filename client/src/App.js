@@ -13,6 +13,7 @@ import AddDoctor  from './components/doctor/AddDoctor'
 import EditDoctor from './components/doctor/EditDoctor'
 
 import PatientForm from './components/patient/patientForm'
+import Appointment from './components/bookAppointment/Appointment'
 
 import {Navbar , Nav } from 'react-bootstrap'
  
@@ -35,14 +36,13 @@ function App(props) {
                                     <Nav.Link href={"/"} style={{color:'white'}}>Home</Nav.Link>
                                     <Nav.Link href={"/patients"} style={{color:'white'}}>Patient</Nav.Link>
                                     <Nav.Link href={"/doctors"} style={{color:'white'}}>Doctor</Nav.Link>
-                                    <Nav.Link href={"/bookappointiment"} style={{color:'white'}}>Book Appointment</Nav.Link>
+                                    <Nav.Link href={"/appointment"} style={{color:'white'}}>Book Appointment</Nav.Link>
                                     <Nav.Link to="#" onClick={handleLogout} style={{color:'white'}}>Logout</Nav.Link>
                                 </Nav>
                             </Navbar>
                         </div>
 
                     ) : (
-                        <div> 
                         <div>
                         <Navbar bg="dark" variant="dark" >
                              <Navbar.Brand href={"/"} style={{color:'white'}}>Findmy Doctor</Navbar.Brand>
@@ -52,7 +52,6 @@ function App(props) {
                                  <Nav.Link href={"/users/login"} style={{color:'white'}}>Login</Nav.Link>
                              </Nav>
                          </Navbar>
-                     </div>
                         </div>
                     )
                      
@@ -68,6 +67,8 @@ function App(props) {
                     <Route path="/doctors" component={EditDoctor} />
 
                     <Route path='/patients' component={PatientForm} />
+
+                    <Route path="/appointment" component={Appointment} />
                 </Switch>
             </div>
         </BrowserRouter>
