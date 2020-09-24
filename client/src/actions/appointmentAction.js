@@ -1,4 +1,5 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 
 export const setAppointment=(appointment)=>{
     return { type:'SET_APPOINTMENT',payload:appointment}
@@ -9,11 +10,11 @@ export const startAppointment=(formData,redirect)=>{
         axios.post('/appointment',formData)
             .then((response)=>{
                 console.log(response.data)
-                if(response.data.hasOwnProperty('error')){
-                    alert(response.data.message)
+                if(response.data.hasOwnProperty('errors')){
+                    swal(response.data.message)
                 }
                 else{
-                    alert('You have sucessfully booked your Appointment')
+                    swal('You have sucessfully booked your Appointment')
                     dispatch(setAppointment(response.data))
                     redirect()
                 }
@@ -28,7 +29,7 @@ export const startGetAppointment=()=>{
     return(dispatch)=>{
         axios.get('/appointment',{
             headers:{
-                'authorization':localStorage.getItem('authToken')
+                'x-auth':localStorage.getItem('authToken')
             }
         })
         .then((response)=>{
@@ -36,7 +37,7 @@ export const startGetAppointment=()=>{
             dispatch(setAppointment(appointment))
         })
         .catch((err)=>{
-            alert(err)
+            swal(err)
         })
     }
 }

@@ -23,9 +23,9 @@ router.get('/patients/:id',authenticateUser,patientsController.show)
 router.put('/patients/:id',authenticateUser,patientsController.update)
 router.delete('/patients/:id',authenticateUser,patientsController.destory)
 
-router.post('/appointment',appointmentController.post)
+router.post('/appointment',authenticateUser,appointmentController.post)
 router.get('/appointment',authenticateUser,appointmentController.get)
-router.put('/appointment/:id',appointmentController.update)
+router.put('/appointment/:id',authenticateUser,appointmentController.update)
 
 
 module.exports = router

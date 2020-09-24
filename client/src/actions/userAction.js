@@ -1,4 +1,5 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 
 export const setUser=(user)=>{
     return {type:'SET_USER',payload:user }
@@ -11,11 +12,11 @@ export const startLoginUser=(loginData,redirect)=>{
             // console.log(response.data)
             if(response.data.hasOwnProperty('error'))
             {
-                alert(response.data.error)
+                swal(response.data.error)
             }
             else
             {
-                alert('login successfully')
+                swal('login successfully')
                 localStorage.setItem('authToken',response.data.token)
                 axios.get('/users/accounts',{headers:{'x-auth':localStorage.getItem('authToken')}})
                 .then((response)=>{
@@ -52,11 +53,11 @@ export const startRegisterUser=(registerData,redirect)=>{
             // console.log(response.data)
             if(response.data.hasOwnProperty('errors'))
             {
-                alert(response.data.message)
+                swal(response.data.message)
             } 
             else
             {
-                alert('successfully registered')
+                swal('successfully registered')
                 // props.history.push('/users/login')
                 redirect()
             }

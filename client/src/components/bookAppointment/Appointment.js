@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import moment from 'moment'
+import 'react-calendar/dist/Calendar.css'
 import {Alert} from 'react-bootstrap'
 import Calendar from 'react-calendar'
 import {startAppointment} from '../../actions/appointmentAction'
@@ -90,6 +91,9 @@ class Appointment extends React.Component {
                                     <label htmlFor='specialist'>Specialist</label>
                                     <select value={this.state.specialist} name ='specialist' onChange={this.handleChange}>
                                         <option value="">---select---</option>
+                                        <option value="General Physician">General Physician</option>
+                                        <option value='Gynaecology'>Gynaecology</option>
+                                        <option value='Dermatology'>Dermatology</option>
                                     </select>
                                 </div>
 
@@ -107,7 +111,7 @@ class Appointment extends React.Component {
                                         <option value="Evening">Evening</option>
                                     </select>
                                 </div>
-                                <input type='submit' value='submit' class='btn btn-danger' />
+                                <input type='submit' value='submit' className='btn btn-danger' />
                             </form>
                         </div>
                     </div>

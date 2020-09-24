@@ -1,4 +1,5 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 
 export const AddDoctors =(doctor)=>{
     return {type: 'ADD_DOCTORS',payload:doctor}
@@ -8,15 +9,15 @@ export const startAddDoctors =(formData,redirect)=>{
     return(dispatch)=> {
         axios.post('/doctors',formData,{
             headers: {
-                'x-auth':localStorage.getItem('authTocken')
+                'x-auth':localStorage.getItem('authToken')
             }
         })
         .then((response)=>{
             if(response.data.hasOwnProperty('errors')){
-                alert(response.data.message)
+                swal(response.data.message)
             }
             else{
-                alert('successfully added')
+                swal('successfully added')
                 const doctor = response.data
                 redirect()
                 dispatch(AddDoctors(doctor))
@@ -70,10 +71,10 @@ export const startEditDoctor = (doctor,redirect) => {
         })
         .then((response)=> {
             if(response.data.hasOwnProperty('errors')){
-                alert(response.data.message)
+                swal(response.data.message)
             }
             else{
-                alert('update sucessfully')
+                swal('update sucessfully')
                 const doctor = response.data
                 dispatch(editDoctor(doctor))
                 redirect()
